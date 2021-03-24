@@ -6,11 +6,24 @@
     export let name = "";
     export let lifePoints = 0;
     export let stamina = 0;
-    export let magicPower =0;
+    export let magicPower = 0;
 
     let firstName = name.split(" ")[0];
     let [lastName] = name.split(" ").slice(-1);
 </script>
+
+<svelte:head>
+    <title>{firstName} {lastName}</title>
+</svelte:head>
+
+<header>
+    <div>
+        <Life {lifePoints} />
+        <Stamina {stamina} />
+    </div>
+    <h1>{firstName}</h1>
+    <div><Magic {magicPower} /></div>
+</header>
 
 <style>
     header {
@@ -35,18 +48,3 @@
         margin: 0;
     }
 </style>
-
-<svelte:head>
-    <title>{firstName} {lastName}</title>
-</svelte:head>
-
-<header>
-    <div>
-        <Life {lifePoints} />
-        <Stamina {stamina} />
-    </div>
-    <h1>{firstName}</h1>
-    <div><Magic {magicPower} /></div>
-</header>
-
-

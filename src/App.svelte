@@ -14,7 +14,6 @@
             return res.json();
         })
         .then((data) => {
-            console.log(data);
             scData = data;
             firstName = scData.Name.split(" ")[0];
             isLoading = false;

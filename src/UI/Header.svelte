@@ -7,6 +7,7 @@
     export let lifePoints = 0;
     export let stamina = 0;
     export let magicPower = 0;
+    export let magicResistence = 0;
 
     let firstName = name.split(" ")[0];
     let [lastName] = name.split(" ").slice(-1);
@@ -21,8 +22,8 @@
         <Life {lifePoints} />
         <Stamina {stamina} />
     </div>
-    <h1>{firstName}</h1>
-    <div><Magic {magicPower} /></div>
+    <h2>{firstName}</h2>
+    <div><Magic {magicPower} {magicResistence}/></div>
 </header>
 
 <style>
@@ -33,7 +34,7 @@
         top: 0;
         left: 0;
         height: 3rem;
-        background: #26794f;
+        background: #6d1919;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -41,10 +42,12 @@
     }
     div {
         display: flex;
+        justify-content: space-between;
         align-items: center;
+        width: 7.5rem;
     }
-    h1 {
+    h2 {
         color: white;
-        margin: 0;
+        margin: auto;
     }
 </style>

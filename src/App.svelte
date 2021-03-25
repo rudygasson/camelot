@@ -26,33 +26,28 @@
         });
 </script>
 
-<main>
-    {#if isLoading}
-        <p>Loading...</p>
-    {:else}
-        <Header
-            name={scData.Name}
-            lifePoints={scData.Lebenspunkte}
-            stamina={scData.Ausdauer}
-            magicPower={scData.Astralenergie}
-        />
+{#if isLoading}
+    <p>Loading...</p>
+{:else}
+    <Header
+        name={scData.Name}
+        lifePoints={scData.Lebenspunkte}
+        stamina={scData.Ausdauer}
+        magicPower={scData.Astralenergie}
+        magicResistence={scData.Magieresistenz}
+    />
+    <main>
         <h1>Hallo {firstName}!</h1>
-    {/if}
-</main>
+    </main>
+{/if}
 
 <style>
     main {
+        grid-area: main;
         text-align: center;
-        padding: 1em;
-        max-width: 240px;
-        margin: 0 auto;
-    }
-
-    h1 {
-        color: #ff3e00;
-        text-transform: uppercase;
-        font-size: 3em;
-        font-weight: 100;
+        padding: 0;
+        /* max-width: 240px; */
+        margin: 0;
     }
 
     @media (min-width: 640px) {

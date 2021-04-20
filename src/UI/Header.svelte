@@ -1,14 +1,14 @@
 <script>
   import HeaderScore from "./HeaderScore.svelte";
 
-  export let name = "";
-  export let lifePoints = 0;
-  export let stamina = 0;
-  export let magicPower = 0;
-  export let magicResistence = 0;
+  export let Name = "";
+  export let Lebenspunkte = 0;
+  export let Ausdauer = 0;
+  export let Astralenergie = 0;
+  export let Magieresistenz = 0;
 
-  let firstName = name.split(" ")[0];
-  let [lastName] = name.split(" ").slice(-1);
+  let firstName = Name.split(" ")[0];
+  let [lastName] = Name.split(" ").slice(-1);
 </script>
 
 <svelte:head>
@@ -16,11 +16,11 @@
 </svelte:head>
 
 <header>
-  <HeaderScore icon="heart" score={lifePoints} />
-  <HeaderScore icon="hourglass" score={stamina} />
+  <HeaderScore icon="Lebenspunkte" score={Lebenspunkte} />
+  <HeaderScore icon="Ausdauer" score={Ausdauer} />
   <div class="header__title">{firstName}</div>
-  <HeaderScore icon="magic-wand" score={magicPower} />
-  <HeaderScore icon="bolt" score={magicResistence} />
+  <HeaderScore icon="Astralenergie" score={Astralenergie} />
+  <HeaderScore icon="Magieresistenz" score={Magieresistenz} />
 </header>
 
 <style>

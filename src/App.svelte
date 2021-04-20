@@ -18,16 +18,10 @@
     });
 </script>
 
-<Header
-  name={scData.Name}
-  lifePoints={scData.Lebenspunkte}
-  stamina={scData.Ausdauer}
-  magicPower={scData.Astralenergie}
-  magicResistence={scData.Magieresistenz}
-/>
 {#if isLoading}
   <p>Loading...</p>
 {:else}
+  <Header {...scData} />
   <main>
     <h1>Hallo {firstName}!</h1>
   </main>

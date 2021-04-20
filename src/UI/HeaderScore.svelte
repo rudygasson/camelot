@@ -1,10 +1,16 @@
 <script>
-  export let icon = "";
+  import Icon from './Icon.svelte';
+  import icons from '../icons/icons';
+  
+  export let icon = 'Lebenspunkte';
   export let score = 0;
+
+  let pic=icons[icon].img;
+  let viewBox=icons[icon].viewBox;
 </script>
 
 <div role="cell" class="score">
-  <img class="score__icon" src={"assets/icons/" + icon + ".svg"} alt="" />
+  <Icon name={icon} {pic} {viewBox}></Icon>
   <p class="score__value">{score}</p>
 </div>
 
@@ -15,10 +21,6 @@
     justify-content: space-around;
     align-items: center;
     width: 4.4rem;
-  }
-
-  .score__icon {
-    height: 2rem;
   }
 
   .score__value {

@@ -1,15 +1,24 @@
 <script>
   import Header from "./UI/Header.svelte";
   import getJsonData from "./utilities/getJsonData";
+  import pick from "./utilities/pick";
 
   let isLoading = true;
-  let scData = {};
+  let scData,
+    headerData = {};
   let firstName = "";
 
   getJsonData("sc.json")
     .then((data) => {
       scData = data;
       firstName = scData.Name.split(" ")[0];
+      headerData = pick(scData, [
+        "Name",
+        "Lebenspunkte",
+        "Ausdauer",
+        "Astralenergie",
+        "Magieresistenz",
+      ]);
       isLoading = false;
     })
     .catch((err) => {
@@ -21,7 +30,7 @@
 {#if isLoading}
   <p>Loading...</p>
 {:else}
-  <Header {...scData} />
+  <Header {...headerData} />
   <main>
     <h1>Hallo {firstName}!</h1>
   </main>

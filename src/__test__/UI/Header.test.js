@@ -1,12 +1,16 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import '@testing-library/jest-dom/extend-expect'
 import { render } from '@testing-library/svelte'
 
 import Header from '../../UI/Header.svelte'
 
-test('shows proper name when rendered', () => {
-  const { container } = render(Header, { Name: 'Charlotte Holzer' })
+test('shows proper name and data when rendered', () => {
+  const { container } = render(Header, { Name: 'Charlotte Holzer', Lebenspunkte: 30 })
 
-  expect(container.querySelector('.header__title').textContent).toEqual('Charlotte');
+  expect(container).toMatchSnapshot();
 });
 
 test('shows zeros as default header values if no values are provided', () => {

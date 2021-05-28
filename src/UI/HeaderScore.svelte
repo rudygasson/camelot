@@ -11,7 +11,7 @@
 
 <div role="cell" class="score">
   <Icon name={icon} {pic} {viewBox}></Icon>
-  <p class="score__value">{score}</p>
+  <div class="score__value">{score}</div>
 </div>
 
 <style>
@@ -24,6 +24,7 @@
   }
 
   .score__value {
+    margin: 0;
     font-size: 1.5rem;
   }
 </style>

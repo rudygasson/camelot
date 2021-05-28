@@ -39,7 +39,7 @@
   }
 
   .header__title {
-    margin: auto;
+    margin: 0 auto;
     height: 2rem;
     font-size: 1.5rem;
   }

@@ -1,16 +1,9 @@
 <script>
-  import Icon from './Icon.svelte';
-  import icons from '../icons/icons';
-  
-  export let icon = 'Lebenspunkte';
   export let score = 0;
-
-  let pic=icons[icon].img;
-  let viewBox=icons[icon].viewBox;
 </script>
 
 <div role="cell" class="score">
-  <Icon name={icon} {pic} {viewBox}></Icon>
+  <slot></slot>
   <div class="score__value">{score}</div>
 </div>
 

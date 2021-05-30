@@ -1,24 +1,22 @@
 <script>
-  import Header from "./UI/Header.svelte";
   import getJsonData from "./utilities/getJsonData";
-  import pick from "./utilities/pick";
+
+  import HeaderScore from "./UI/HeaderScore.svelte";
+  import Bolt from "./icons/Bolt.svelte";
+  import Heart from "./icons/Heart.svelte";
+  import Hourglass from "./icons/Hourglass.svelte";
+  import MagicWand from "./icons/MagicWand.svelte";
 
   let isLoading = true;
-  let scData,
-    headerData = {};
-  let firstName = "";
+  let sc = {};
+  let firstName,
+    lastName = "";
 
   getJsonData("sc.json")
     .then((data) => {
-      scData = data;
-      firstName = scData.Name.split(" ")[0];
-      headerData = pick(scData, [
-        "Name",
-        "Lebenspunkte",
-        "Ausdauer",
-        "Astralenergie",
-        "Magieresistenz",
-      ]);
+      sc = data;
+      firstName = sc.Name.split(" ")[0];
+      [lastName] = sc.Name.split(" ").slice(-1);
       isLoading = false;
     })
     .catch((err) => {
@@ -27,27 +25,29 @@
     });
 </script>
 
+<svelte:head>
+  <title>{firstName} {lastName}</title>
+</svelte:head>
+
 {#if isLoading}
   <p>Loading...</p>
 {:else}
-  <Header {...headerData} />
+  <header>
+    <HeaderScore score={sc.Lebenspunkte}>
+      <Heart />
+    </HeaderScore>
+    <HeaderScore score={sc.Ausdauer}>
+      <Hourglass />
+    </HeaderScore>
+    <div class="header__title">{firstName}</div>
+    <HeaderScore score={sc.Astralenergie}>
+      <MagicWand />
+    </HeaderScore>
+    <HeaderScore score={sc.Magieresistenz}>
+      <Bolt />
+    </HeaderScore>
+  </header>
   <main>
     <h1>Hallo {firstName}!</h1>
   </main>
 {/if}
-
-<style>
-  main {
-    grid-area: main;
-    text-align: center;
-    padding: 0;
-    /* max-width: 240px; */
-    margin: 0;
-  }
-
-  @media (min-width: 640px) {
-    main {
-      max-width: none;
-    }
-  }
-</style>

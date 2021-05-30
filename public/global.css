@@ -19,3 +19,37 @@ body {
     
     font-family: "Helvetica Neue", sans-serif;
 }
+
+header {
+    color: white;
+    padding: 0.5rem;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    height: 3rem;
+    background: #6d1919;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .header__title {
+    margin: 0 auto;
+    height: 2rem;
+    font-size: 1.5rem;
+  }
+
+  main {
+    grid-area: main;
+    text-align: center;
+    padding: 0;
+    /* max-width: 240px; */
+    margin: 0;
+  }
+
+  @media (min-width: 640px) {
+    main {
+      max-width: none;
+    }
+  }
